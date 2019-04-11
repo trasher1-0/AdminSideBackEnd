@@ -1,0 +1,4 @@
+com\trasher\spring\config\AppConfig.class
+com\trasher\spring\config\WebConfig.class
+com\trasher\spring\model\Admin.class
+com\trasher\spring\config\MyWebAppInitializer.class
