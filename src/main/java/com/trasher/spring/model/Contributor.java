@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "Contributor")
+
 public class Contributor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,12 +52,5 @@ public class Contributor {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	@Override
-	public String toString() {
-		return "Contributor [id=" + id + ", username=" + username + ", fullname=" + fullname + ", address=" + address
-				+ ", city=" + city + ", password=" + password + "]";
-	}
-	
 	
 }

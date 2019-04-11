@@ -31,7 +31,7 @@ public class ContributorDAOImp implements ContributorDAO {
 
    @Override
    public List<Contributor> list() {
-      List<Contributor> list = sessionFactory.getCurrentSession().createQuery("from contributor").list();
+      List<Contributor> list = sessionFactory.getCurrentSession().createQuery("from Contributor").list();
       return list;
    }
 

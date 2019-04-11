@@ -30,7 +30,7 @@ public class ContributorController {
    @PostMapping("/contributor")
    public ResponseEntity<?> save(@RequestBody Contributor contributor) {
       long id = contributorService.save(contributor);
-      return ResponseEntity.ok().body("New Contributor has been saved with ID:" + id);
+      return ResponseEntity.ok().body("New Contributor has been saved with id:" + id);
    }
 
    /*---Get a contributor by id---*/

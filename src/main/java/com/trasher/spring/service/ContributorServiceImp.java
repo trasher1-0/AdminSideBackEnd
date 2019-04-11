@@ -11,13 +11,13 @@ import com.trasher.spring.model.Contributor;
 @Service
 @Transactional(readOnly = true)
 public class ContributorServiceImp implements ContributorService{
-	@Autowired
+	   @Autowired
 	   private ContributorDAO contributorDAO;
 
 	   @Transactional
 	   @Override
-	   public long save(Contributor book) {
-	      return contributorDAO.save(book);
+	   public long save(Contributor contributor) {
+	      return contributorDAO.save(contributor);
 	   }
 
 	   @Override
@@ -32,8 +32,8 @@ public class ContributorServiceImp implements ContributorService{
 
 	   @Transactional
 	   @Override
-	   public void update(long id, Contributor book) {
-		   contributorDAO.update(id, book);
+	   public void update(long id, Contributor contributor) {
+		   contributorDAO.update(id, contributor);
 	   }
 
 	   @Transactional
