@@ -37,6 +37,4 @@ public class Admin {
 	public String toString() {
 		return "Admin [id=" + id + ", username=" + username + ", password=" + password + "]";
 	}
-	
-	
 }
