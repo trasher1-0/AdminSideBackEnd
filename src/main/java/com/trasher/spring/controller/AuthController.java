@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trasher.spring.model.Admin;
+import com.trasher.spring.model.Contributor;
 import com.trasher.spring.service.AdminService;
+import com.trasher.spring.service.ContributorService;
 
 
 @CrossOrigin(origins = "*")
@@ -34,5 +36,23 @@ public class AuthController {
 			
 		}
 		return ch;
-	   }
+	}
+	
+	@Autowired
+	private ContributorService contributorService;
+	
+	@PostMapping("/contributorAuth")
+	public boolean checkContributor(@RequestBody Contributor contributor) {
+		boolean ch=false;
+		List<Contributor> contributors = contributorService.list();
+		//System.out.println(contributors);
+		for(int i=0;i<contributors.size();i++) {
+			if(contributors.get(i).getUsername().equals(contributor.getUsername()) && contributors.get(i).getPassword().equals(contributor.getPassword())) {
+				ch= true;
+				break;
+			}
+			
+		}
+		return ch;
+	}
 }
