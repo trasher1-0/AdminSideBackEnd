@@ -43,6 +43,8 @@ public class ContributorDAOImp implements ContributorDAO {
       contributor2.setFullname(contributor.getFullname());
       contributor2.setAddress(contributor.getAddress());
       contributor2.setCity(contributor.getCity());
+      contributor2.setMobile(contributor.getMobile());
+      contributor2.setEmail(contributor.getEmail());
       contributor2.setPassword(contributor.getPassword());
       session.flush();
    }

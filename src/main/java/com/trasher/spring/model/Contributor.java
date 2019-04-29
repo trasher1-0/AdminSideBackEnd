@@ -15,6 +15,8 @@ public class Contributor {
 	private String fullname;
 	private String address;
 	private String city;
+	private String mobile;
+	private String email;
 	private String password;
 	public Long getId() {
 		return id;
@@ -45,6 +47,19 @@ public class Contributor {
 	}
 	public void setCity(String city) {
 		this.city = city;
+	}
+	
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;
