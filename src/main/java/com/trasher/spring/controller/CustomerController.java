@@ -47,6 +47,20 @@ public class CustomerController {
       List<Customer> customers = customerService.list();
       return ResponseEntity.ok().body(customers);
    }
+   
+   /*---get all pending customers---*/
+   @GetMapping("/customer/pending")
+   public ResponseEntity<List<Customer>> pendinglist() {
+      List<Customer> customers = customerService.pendinglist();
+      return ResponseEntity.ok().body(customers);
+   }
+   
+   /*---get all pending customers---*/
+   @GetMapping("/customer/complete")
+   public ResponseEntity<List<Customer>> completelist() {
+      List<Customer> customers = customerService.completelist();
+      return ResponseEntity.ok().body(customers);
+   }
 
    /*---Update a customer by invoiceno---*/
    @PutMapping("/customer/{invoiceno}")

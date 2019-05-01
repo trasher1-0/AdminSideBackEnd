@@ -29,6 +29,16 @@ public class CustomerServiceImp implements CustomerService{
 	   public List<Customer> list() {
 	      return customerDAO.list();
 	   }
+	   
+	   @Override
+	   public List<Customer> pendinglist() {
+	      return customerDAO.pendinglist();
+	   }
+	   
+	   @Override
+	   public List<Customer> completelist() {
+	      return customerDAO.completelist();
+	   }
 
 	   @Transactional
 	   @Override

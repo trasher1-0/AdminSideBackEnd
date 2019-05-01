@@ -34,6 +34,18 @@ public class CustomerDAOImp implements CustomerDAO {
       List<Customer> list = sessionFactory.getCurrentSession().createQuery("from Customer").list();
       return list;
    }
+   
+   @Override
+   public List<Customer> pendinglist() {
+      List<Customer> list = sessionFactory.getCurrentSession().createQuery("from Customer where status=0").list();
+      return list;
+   }
+   
+   @Override
+   public List<Customer> completelist() {
+      List<Customer> list = sessionFactory.getCurrentSession().createQuery("from Customer where status=1").list();
+      return list;
+   }
 
    @Override
    public void update(long invoiceno, Customer customer) {
