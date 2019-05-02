@@ -16,11 +16,11 @@ public class FileServiceImp implements FileService{
 	private static final String FILE_DIRECTORY = "F:/angular/AdminSide/src/assets/uploads";
  
 	@Override
-	public void storeFile(MultipartFile file) throws IOException {
+	public String storeFile(MultipartFile file) throws IOException {
 		Path filePath = Paths.get(FILE_DIRECTORY + "/" + file.getOriginalFilename());
  
 		Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-		System.out.println(file.getOriginalFilename());
+		return file.getOriginalFilename();
 	}
 	
 

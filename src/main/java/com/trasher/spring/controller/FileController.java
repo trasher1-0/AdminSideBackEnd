@@ -38,9 +38,9 @@ public class FileController {
  
 	@PostMapping("/upload")
 	@ResponseStatus(HttpStatus.OK)
-	public void handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
+	public String handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
 		System.out.println("Check");
-		fileService.storeFile(file);
+		return fileService.storeFile(file);
 	}
  
 }

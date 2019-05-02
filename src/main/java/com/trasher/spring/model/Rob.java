@@ -1,29 +1,19 @@
 package com.trasher.spring.model;
 
-import java.io.File;
-
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.web.multipart.MultipartFile;
 
-@Entity(name="Robot")
-public class Robot {
+public class Rob {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String name;
-	private String details;
-	private String image;
-
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	public Long id;
+	public String name;
+	public String details;
+	public String image;
+	public MultipartFile file;
 	public String getName() {
 		return name;
 	}
@@ -42,11 +32,11 @@ public class Robot {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	@Override
-	public String toString() {
-		return "Robot [id=" + id + ", name=" + name + ", details=" + details + ", image=" + image + "]";
+	public MultipartFile getFile() {
+		return file;
 	}
-	
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	
 }

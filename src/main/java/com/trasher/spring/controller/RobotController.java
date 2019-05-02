@@ -1,6 +1,7 @@
 package com.trasher.spring.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.trasher.spring.model.Rob;
 import com.trasher.spring.model.Robot;
+import com.trasher.spring.service.FileService;
 import com.trasher.spring.service.RobotService;
 
 
@@ -29,10 +32,21 @@ public class RobotController {
 	
    @Autowired
    private RobotService robotService;
+   
+   @Autowired
+   private final FileService fileService;
+	
+   @Autowired
+   public RobotController(FileService fileService) {
+	   this.fileService = fileService;
+   }
  
    /*---Add new robot---*/
    @PostMapping("/robot")
-   public ResponseEntity<?> save(@RequestBody Robot robot) {
+   public ResponseEntity<?> save(@RequestBody Robot robot,@RequestBody Rob rob) throws IOException{
+	  System.out.println(rob.getFile());
+	  MultipartFile file=rob.getFile();
+	  fileService.storeFile(file);  
       long id = robotService.save(robot);
       return ResponseEntity.ok().body("New Robot has been saved with id:" + id);
    }
