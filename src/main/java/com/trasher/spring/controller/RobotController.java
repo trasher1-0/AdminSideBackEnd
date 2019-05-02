@@ -1,5 +1,6 @@
 package com.trasher.spring.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.trasher.spring.model.Robot;
 import com.trasher.spring.service.RobotService;
@@ -22,10 +26,10 @@ import com.trasher.spring.service.RobotService;
 @RestController
 @RequestMapping("/api")
 public class RobotController {
-
+	
    @Autowired
    private RobotService robotService;
-
+ 
    /*---Add new robot---*/
    @PostMapping("/robot")
    public ResponseEntity<?> save(@RequestBody Robot robot) {
