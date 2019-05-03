@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trasher.spring.model.Admin;
 import com.trasher.spring.model.Contributor;
+import com.trasher.spring.model.Organizer;
 import com.trasher.spring.service.AdminService;
 import com.trasher.spring.service.ContributorService;
+import com.trasher.spring.service.OrganizerService;
 
 
 @CrossOrigin(origins = "*")
@@ -22,6 +24,12 @@ import com.trasher.spring.service.ContributorService;
 public class AuthController {
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private ContributorService contributorService;
+	
+	@Autowired
+	private OrganizerService organizerService;
 	
 	@PostMapping("/adminAuth")
 	public boolean check(@RequestBody Admin admin) {
@@ -38,9 +46,7 @@ public class AuthController {
 		return ch;
 	}
 	
-	@Autowired
-	private ContributorService contributorService;
-	
+
 	@PostMapping("/contributorAuth")
 	public boolean checkContributor(@RequestBody Contributor contributor) {
 		boolean ch=false;
@@ -48,6 +54,21 @@ public class AuthController {
 		//System.out.println(contributors);
 		for(int i=0;i<contributors.size();i++) {
 			if(contributors.get(i).getUsername().equals(contributor.getUsername()) && contributors.get(i).getPassword().equals(contributor.getPassword())) {
+				ch= true;
+				break;
+			}
+			
+		}
+		return ch;
+	}
+	
+	@PostMapping("/organizerAuth")
+	public boolean checkOrganizer(@RequestBody Organizer organizer) {
+		boolean ch=false;
+		List<Organizer> organizers = organizerService.list();
+		//System.out.println(organizers);
+		for(int i=0;i<organizers.size();i++) {
+			if(organizers.get(i).getUsername().equals(organizer.getUsername()) && organizers.get(i).getPassword().equals(organizer.getPassword())) {
 				ch= true;
 				break;
 			}
