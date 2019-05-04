@@ -46,34 +46,39 @@ public class AuthController {
 		return ch;
 	}
 	
-
+	//validate Contributor
 	@PostMapping("/contributorAuth")
-	public boolean checkContributor(@RequestBody Contributor contributor) {
+	public Contributor checkContributor(@RequestBody Contributor contributor) throws NullPointerException{
+		Contributor cont=new Contributor();
+		System.out.println(contributor.getUsername());
 		boolean ch=false;
 		List<Contributor> contributors = contributorService.list();
 		//System.out.println(contributors);
 		for(int i=0;i<contributors.size();i++) {
 			if(contributors.get(i).getUsername().equals(contributor.getUsername()) && contributors.get(i).getPassword().equals(contributor.getPassword())) {
-				ch= true;
+				cont=contributors.get(i);
 				break;
 			}
 			
 		}
-		return ch;
+		System.out.println(cont.getUsername());
+		return cont;
 	}
 	
+	//validate Organizer
 	@PostMapping("/organizerAuth")
-	public boolean checkOrganizer(@RequestBody Organizer organizer) {
+	public Organizer checkOrganizer(@RequestBody Organizer organizer) {
 		boolean ch=false;
+		Organizer org = new Organizer();
 		List<Organizer> organizers = organizerService.list();
 		//System.out.println(organizers);
 		for(int i=0;i<organizers.size();i++) {
 			if(organizers.get(i).getUsername().equals(organizer.getUsername()) && organizers.get(i).getPassword().equals(organizer.getPassword())) {
-				ch= true;
+				org = organizers.get(i);
 				break;
 			}
 			
 		}
-		return ch;
+		return org;
 	}
 }
