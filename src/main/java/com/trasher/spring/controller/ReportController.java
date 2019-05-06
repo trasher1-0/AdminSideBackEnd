@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trasher.spring.model.Admin;
 import com.trasher.spring.model.Customer;
+import com.trasher.spring.model.Report;
 import com.trasher.spring.service.CustomerService;
 
 @CrossOrigin(origins = "*")
@@ -24,23 +25,35 @@ public class ReportController {
 	private CustomerService customerService;
 	
 	@GetMapping("/reportinvoices")
-	public void getInvoices() {
+	public List<Report> getInvoices() throws NullPointerException {
+		//Get All Completed Invoices
 		List<Customer> customers=customerService.completelist();
+		
+		//create List for store Months and Counts
+		List<Report> reports = new ArrayList<Report>();
 		int n=customers.size();
 		String[] dates=new String[n];
 		int[] counts=new int[n];
 		ArrayList<String> months=new ArrayList<String>();
-
+		
+		// Get Completed Invoice Dated as yyyy/mm format
 		for(int i=0;i<n;i++) {
 			dates[i]=customers.get(i).getDate().substring(0,7);
 		}
+		
 	    months=this.Dist(dates);
 	    counts=this.getCount(dates);
 	    
-	    System.out.println(months.toString());
-	    System.out.println(Arrays.toString(counts));
+	    for(int j=0;j<months.size();j++) {
+	    	Report report=new Report(months.get(j),counts[j]);
+	    	System.out.println(report.toString());
+	    	reports.add(report);
+	    }
+	    
+	    return reports;     
 	}
 	
+	//function for get Distinct Value
 	public static ArrayList<String> Dist(String[] num){
         int n=num.length;
         ArrayList<String> lis=new ArrayList<String>();
@@ -59,6 +72,7 @@ public class ReportController {
     }
 
 
+	//Function for calculate Distinct value count
     public static int[] getCount(String[] num){
         int n=num.length;
         ArrayList<String> dis=Dist(num);
