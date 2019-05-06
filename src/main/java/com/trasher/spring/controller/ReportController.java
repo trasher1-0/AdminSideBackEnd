@@ -1,6 +1,7 @@
 package com.trasher.spring.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,17 @@ public class ReportController {
 		List<Customer> customers=customerService.completelist();
 		int n=customers.size();
 		String[] dates=new String[n];
+		int[] counts=new int[n];
+		ArrayList<String> months=new ArrayList<String>();
 
 		for(int i=0;i<n;i++) {
 			dates[i]=customers.get(i).getDate().substring(0,7);
 		}
-	    this.getCount(dates);
-		
+	    months=this.Dist(dates);
+	    counts=this.getCount(dates);
+	    
+	    System.out.println(months.toString());
+	    System.out.println(Arrays.toString(counts));
 	}
 	
 	public static ArrayList<String> Dist(String[] num){
@@ -53,10 +59,11 @@ public class ReportController {
     }
 
 
-    public static void getCount(String[] num){
+    public static int[] getCount(String[] num){
         int n=num.length;
         ArrayList<String> dis=Dist(num);
         int m=dis.size();
+        int[] count=new int[m];
         for(int i=0;i<m;i++){
             int c=0;
             for(int j=0;j<n;j++){
@@ -64,8 +71,9 @@ public class ReportController {
                     c++;
                 }
             }
-            System.out.println(dis.get(i)+" ==> "+c);
+            count[i]=c;
         }
+        return count;
     }
 
 
