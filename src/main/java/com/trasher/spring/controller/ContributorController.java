@@ -46,6 +46,13 @@ public class ContributorController {
       List<Contributor> contributors = contributorService.list();
       return ResponseEntity.ok().body(contributors);
    }
+   
+   /*---get count of contributors---*/
+   @GetMapping("/contributor/count")
+   public int countCon() {
+      List<Contributor> contributors = contributorService.list();
+      return contributors.size();
+   }
 
    /*---Update a contributor by id---*/
    @PutMapping("/contributor/{id}")

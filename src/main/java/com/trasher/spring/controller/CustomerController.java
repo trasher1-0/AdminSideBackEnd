@@ -48,6 +48,20 @@ public class CustomerController {
       return ResponseEntity.ok().body(customers);
    }
    
+   /*---get pending customers count---*/
+   @GetMapping("/customer/countPending")
+   public int countPen() {
+      List<Customer> customers = customerService.pendinglist();
+      return customers.size();
+   }
+   
+   /*---get Completed customers count---*/
+   @GetMapping("/customer/countSuccess")
+   public int countCom() {
+      List<Customer> customers = customerService.completelist();
+      return customers.size();
+   }
+   
    /*---get all pending customers---*/
    @GetMapping("/customer/pending")
    public ResponseEntity<List<Customer>> pendinglist() {

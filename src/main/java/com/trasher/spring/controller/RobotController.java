@@ -53,6 +53,13 @@ public class RobotController {
       List<Robot> robots = robotService.list();
       return ResponseEntity.ok().body(robots);
    }
+   
+   /*---get Count of robots---*/
+   @GetMapping("/robot/count")
+   public int countrob() {
+      List<Robot> robots = robotService.list();
+      return robots.size();
+   }
 
    /*---Update a robot by id---*/
    @PutMapping("/robot/{id}")

@@ -46,6 +46,13 @@ public class OrganizerController {
       List<Organizer> organizers = organizerService.list();
       return ResponseEntity.ok().body(organizers);
    }
+   
+   /*---get count of organizers---*/
+   @GetMapping("/organizer/count")
+   public int countOrg() {
+      List<Organizer> organizers = organizerService.list();
+      return organizers.size();
+   }
 
    /*---Update a organizer by id---*/
    @PutMapping("/organizer/{id}")
