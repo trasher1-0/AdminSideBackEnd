@@ -1,6 +1,20 @@
 package com.trasher.spring.config;
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -49,6 +63,10 @@ public class AppConfig {
 
       factoryBean.setHibernateProperties(props);
       factoryBean.setPackagesToScan("com.trasher.spring.model");
+      
+      // Setting Email Properties
+      
+      
 
       return factoryBean;
    }
@@ -59,4 +77,22 @@ public class AppConfig {
       transactionManager.setSessionFactory(getSessionFactory().getObject());
       return transactionManager;
    }
+   
+//   @Bean
+//   public JavaMailSender getJavaMailSender() {
+//       JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+//       mailSender.setHost("smtp.gmail.com");
+//       mailSender.setPort(587);
+//        
+//       mailSender.setUsername("trashercorporation@gmail.com");
+//       mailSender.setPassword("Leavemealone_1");
+//        
+//       Properties props = mailSender.getJavaMailProperties();
+//       props.put("mail.transport.protocol", "smtp");
+//       props.put("mail.smtp.auth", "true");
+//       props.put("mail.smtp.starttls.enable", "true");
+//       props.put("mail.debug", "true");
+//        
+//       return mailSender;
+//   }
 }
