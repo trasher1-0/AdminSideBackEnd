@@ -8,6 +8,8 @@ public interface MessageDAO {
 	long save(Message message);
 	Message get(long id);
     List<Message> list();
+    List<Message> unreadlist();
+    List<Message> readlist();
     void delete(long id);
 
 }

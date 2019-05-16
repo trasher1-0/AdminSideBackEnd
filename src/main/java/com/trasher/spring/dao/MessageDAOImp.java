@@ -34,6 +34,18 @@ public class MessageDAOImp implements MessageDAO {
       List<Message> list = sessionFactory.getCurrentSession().createQuery("from Message").list();
       return list;
    }
+   
+   @Override
+   public List<Message> unreadlist() {
+      List<Message> list = sessionFactory.getCurrentSession().createQuery("from Message where status='0'").list();
+      return list;
+   }
+   
+   @Override
+   public List<Message> readlist() {
+      List<Message> list = sessionFactory.getCurrentSession().createQuery("from Message where status='1'").list();
+      return list;
+   }
 
    @Override
    public void delete(long id) {

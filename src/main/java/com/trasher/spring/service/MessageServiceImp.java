@@ -29,6 +29,16 @@ public class MessageServiceImp implements MessageService{
 	   public List<Message> list() {
 	      return messageDAO.list();
 	   }
+	   
+	   @Override
+	   public List<Message> unreadlist() {
+	      return messageDAO.unreadlist();
+	   }
+	   
+	   @Override
+	   public List<Message> readlist() {
+	      return messageDAO.readlist();
+	   }
 
 	   @Transactional
 	   @Override

@@ -46,6 +46,20 @@ public class MessageController {
       return ResponseEntity.ok().body(messages);
    }
    
+   /*---get all unread messages---*/
+   @GetMapping("/message/unread")
+   public ResponseEntity<List<Message>> unreadlist() {
+      List<Message> messages = messageService.unreadlist();
+      return ResponseEntity.ok().body(messages);
+   }
+   
+   /*---get all read messages---*/
+   @GetMapping("/message/read")
+   public ResponseEntity<List<Message>> readlist() {
+      List<Message> messages = messageService.readlist();
+      return ResponseEntity.ok().body(messages);
+   }
+   
    /*---Delete a message by id---*/
    @DeleteMapping("/message/{id}")
    public ResponseEntity<?> delete(@PathVariable("id") long id) {
