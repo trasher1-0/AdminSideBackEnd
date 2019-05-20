@@ -24,6 +24,11 @@ public class ContributorServiceImp implements ContributorService{
 	   public Contributor get(long id) {
 	      return contributorDAO.get(id);
 	   }
+	   
+	   @Override
+	   public Contributor getPassword(String email) {
+	      return contributorDAO.getPassword(email);
+	   }
 
 	   @Override
 	   public List<Contributor> list() {

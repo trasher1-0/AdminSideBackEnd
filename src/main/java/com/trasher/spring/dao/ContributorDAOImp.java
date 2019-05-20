@@ -28,6 +28,11 @@ public class ContributorDAOImp implements ContributorDAO {
    public Contributor get(long id) {
       return sessionFactory.getCurrentSession().get(Contributor.class, id);
    }
+   
+   @Override
+   public Contributor getPassword(String email) {
+      return sessionFactory.getCurrentSession().get(Contributor.class, email);
+   }
 
    @Override
    public List<Contributor> list() {

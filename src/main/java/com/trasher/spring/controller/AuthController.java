@@ -65,6 +65,23 @@ public class AuthController {
 		return cont;
 	}
 	
+	//Forget Contributor Password
+	@PostMapping("/forget/cont")
+	public Contributor getPassCont(@RequestBody Contributor contributor) throws NullPointerException{
+		Contributor cont=new Contributor();
+		System.out.println(contributor.getUsername());
+		List<Contributor> contributors = contributorService.list();
+		//System.out.println(contributors);
+		for(int i=0;i<contributors.size();i++) {
+			if(contributors.get(i).getEmail().equals(contributor.getEmail())) {
+				cont=contributors.get(i);
+				break;
+			}
+			
+		}
+		return cont;
+	}
+	
 	//validate Organizer
 	@PostMapping("/organizerAuth")
 	public Organizer checkOrganizer(@RequestBody Organizer organizer) {
@@ -74,6 +91,21 @@ public class AuthController {
 		//System.out.println(organizers);
 		for(int i=0;i<organizers.size();i++) {
 			if(organizers.get(i).getUsername().equals(organizer.getUsername()) && organizers.get(i).getPassword().equals(organizer.getPassword())) {
+				org = organizers.get(i);
+				break;
+			}
+			
+		}
+		return org;
+	}
+	
+	//validate Organizer
+	@PostMapping("/forget/org")
+	public Organizer forgetOrg(@RequestBody Organizer organizer) {
+		Organizer org = new Organizer();
+		List<Organizer> organizers = organizerService.list();
+		for(int i=0;i<organizers.size();i++) {
+			if(organizers.get(i).getEmail().equals(organizer.getEmail())) {
 				org = organizers.get(i);
 				break;
 			}

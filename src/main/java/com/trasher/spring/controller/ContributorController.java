@@ -39,6 +39,13 @@ public class ContributorController {
 	  Contributor contributor = contributorService.get(id);
       return ResponseEntity.ok().body(contributor);
    }
+   
+   /*---Get a contributor by email---*/
+   @GetMapping("/contributor/forget/{email}")
+   public ResponseEntity<Contributor> getPassword(@PathVariable("email") String email) {
+	  Contributor contributor = contributorService.getPassword(email);
+      return ResponseEntity.ok().body(contributor);
+   }
 
    /*---get all contributors---*/
    @GetMapping("/contributor")
