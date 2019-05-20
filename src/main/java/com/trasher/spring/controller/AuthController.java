@@ -82,6 +82,23 @@ public class AuthController {
 		return cont;
 	}
 	
+	//Validate Contributor already registered
+	@PostMapping("/exist/cont")
+	public Contributor ExistCont(@RequestBody Contributor contributor) throws NullPointerException{
+		Contributor cont=new Contributor();
+		System.out.println(contributor.getUsername());
+		List<Contributor> contributors = contributorService.list();
+		//System.out.println(contributors);
+		for(int i=0;i<contributors.size();i++) {
+			if(contributors.get(i).getEmail().equals(contributor.getEmail()) || contributors.get(i).getUsername().equals(contributor.getUsername())) {
+				cont=contributors.get(i);
+				break;
+			}
+			
+		}
+		return cont;
+	}
+	
 	//validate Organizer
 	@PostMapping("/organizerAuth")
 	public Organizer checkOrganizer(@RequestBody Organizer organizer) {
@@ -99,7 +116,7 @@ public class AuthController {
 		return org;
 	}
 	
-	//validate Organizer
+	//Forget Organizer
 	@PostMapping("/forget/org")
 	public Organizer forgetOrg(@RequestBody Organizer organizer) {
 		Organizer org = new Organizer();
@@ -110,6 +127,20 @@ public class AuthController {
 				break;
 			}
 			
+		}
+		return org;
+	}
+	
+	//validate Organizer is already registered
+	@PostMapping("/exist/org")
+	public Organizer existOrg(@RequestBody Organizer organizer) {
+		Organizer org = new Organizer();
+		List<Organizer> organizers = organizerService.list();
+		for(int i=0;i<organizers.size();i++) {
+			if(organizers.get(i).getUsername().equals(organizer.getUsername()) || organizers.get(i).getEmail().equals(organizer.getEmail())) {
+				org = organizers.get(i);
+				break;
+			}	
 		}
 		return org;
 	}
