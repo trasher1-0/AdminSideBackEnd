@@ -46,6 +46,20 @@ public class RobotController {
 	  Robot robot = robotService.get(id);
       return ResponseEntity.ok().body(robot);
    }
+   
+   /*---Get a robot by contributor Id---*/
+   @GetMapping("/robot/cont/{id}")
+   public Robot getContRob(@PathVariable("id") long id) throws NullPointerException {
+	   List<Robot> robots = robotService.list();
+	   Robot robot=null;
+	   for(int i=0;i<robots.size();i++) {
+		   if(robots.get(i).getCont_id()==id) {
+			   robot=robots.get(i);
+			   break;
+		   }
+	   }
+	   return robot;
+   }
 
    /*---get all robots---*/
    @GetMapping("/robot")

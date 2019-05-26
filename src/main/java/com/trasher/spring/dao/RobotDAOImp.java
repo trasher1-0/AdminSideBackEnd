@@ -28,7 +28,7 @@ public class RobotDAOImp implements RobotDAO {
    public Robot get(long id) {
       return sessionFactory.getCurrentSession().get(Robot.class, id);
    }
-
+   
    @Override
    public List<Robot> list() {
       List<Robot> list = sessionFactory.getCurrentSession().createQuery("from Robot").list();
@@ -42,6 +42,7 @@ public class RobotDAOImp implements RobotDAO {
       robot2.setName(robot.getName());
       robot2.setDetails(robot.getDetails());
       robot2.setImage(robot.getImage());
+      robot2.setCont_id(robot.getCont_id());
       session.flush();
    }
 

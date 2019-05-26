@@ -17,6 +17,7 @@ public class Robot {
 	private String name;
 	private String details;
 	private String image;
+	private Long contid;
 
 	public Long getId() {
 		return id;
@@ -41,6 +42,13 @@ public class Robot {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	public Long getCont_id() {
+		return contid;
+	}
+	public void setCont_id(Long cont_id) {
+		this.contid = cont_id;
 	}
 	
 	@Override
