@@ -31,7 +31,7 @@ public class AdminDAOImp implements AdminDAO {
 
    @Override
    public List<Admin> list() {
-      List<Admin> list = sessionFactory.getCurrentSession().createQuery("from Admin").list();
+      List<Admin> list = sessionFactory.getCurrentSession().createQuery("from admin").list();
       return list;
    }
 

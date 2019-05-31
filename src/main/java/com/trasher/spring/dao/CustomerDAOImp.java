@@ -31,19 +31,19 @@ public class CustomerDAOImp implements CustomerDAO {
 
    @Override
    public List<Customer> list() {
-      List<Customer> list = sessionFactory.getCurrentSession().createQuery("from Customer").list();
+      List<Customer> list = sessionFactory.getCurrentSession().createQuery("from customer").list();
       return list;
    }
    
    @Override
    public List<Customer> pendinglist() {
-      List<Customer> list = sessionFactory.getCurrentSession().createQuery("from Customer where status=0").list();
+      List<Customer> list = sessionFactory.getCurrentSession().createQuery("from customer where status=0").list();
       return list;
    }
    
    @Override
    public List<Customer> completelist() {
-      List<Customer> list = sessionFactory.getCurrentSession().createQuery("from Customer where status=1").list();
+      List<Customer> list = sessionFactory.getCurrentSession().createQuery("from customer where status=1").list();
       return list;
    }
 

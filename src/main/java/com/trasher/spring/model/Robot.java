@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 import org.springframework.web.multipart.MultipartFile;
 
-@Entity(name="Robot")
+@Entity(name="robot")
 public class Robot {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

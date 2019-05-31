@@ -31,7 +31,7 @@ public class RobotDAOImp implements RobotDAO {
    
    @Override
    public List<Robot> list() {
-      List<Robot> list = sessionFactory.getCurrentSession().createQuery("from Robot").list();
+      List<Robot> list = sessionFactory.getCurrentSession().createQuery("from robot").list();
       return list;
    }
 

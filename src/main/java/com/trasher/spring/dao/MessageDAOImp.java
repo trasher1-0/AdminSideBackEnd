@@ -31,19 +31,19 @@ public class MessageDAOImp implements MessageDAO {
 
    @Override
    public List<Message> list() {
-      List<Message> list = sessionFactory.getCurrentSession().createQuery("from Message").list();
+      List<Message> list = sessionFactory.getCurrentSession().createQuery("from message").list();
       return list;
    }
    
    @Override
    public List<Message> unreadlist() {
-      List<Message> list = sessionFactory.getCurrentSession().createQuery("from Message where status='0'").list();
+      List<Message> list = sessionFactory.getCurrentSession().createQuery("from message where status='0'").list();
       return list;
    }
    
    @Override
    public List<Message> readlist() {
-      List<Message> list = sessionFactory.getCurrentSession().createQuery("from Message where status='1'").list();
+      List<Message> list = sessionFactory.getCurrentSession().createQuery("from message where status='1'").list();
       return list;
    }
 

@@ -31,7 +31,7 @@ public class OrganizerDAOImp implements OrganizerDAO {
 
    @Override
    public List<Organizer> list() {
-      List<Organizer> list = sessionFactory.getCurrentSession().createQuery("from Organizer").list();
+      List<Organizer> list = sessionFactory.getCurrentSession().createQuery("from organizer").list();
       return list;
    }
 
