@@ -8,6 +8,7 @@ public interface RobotDAO {
    Robot get(long id);
    List<Robot> list();
    void update(long id, Robot robot);
+   void addCont(long id, Robot robot);
    void delete(long id);
 }
 

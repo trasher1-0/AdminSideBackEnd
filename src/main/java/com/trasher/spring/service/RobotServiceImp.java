@@ -35,6 +35,12 @@ public class RobotServiceImp implements RobotService{
 	   public void update(long id, Robot robot) {
 		   robotDAO.update(id, robot);
 	   }
+	   
+	   @Transactional
+	   @Override
+	   public void addCont(long id, Robot robot) {
+		   robotDAO.addCont(id, robot);
+	   }
 
 	   @Transactional
 	   @Override

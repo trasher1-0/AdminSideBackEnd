@@ -81,6 +81,14 @@ public class RobotController {
 	  robotService.update(id, robot);
       return ResponseEntity.ok().body("Robot has been updated successfully.");
    }
+   
+   /*---Add Contributor to Robot---*/
+   @PutMapping("/robot/cont/add/{id}")
+   public ResponseEntity<?> addCont(@PathVariable("id") long id, @RequestBody Robot robot) {
+	  robotService.addCont(id, robot);
+	  //System.out.println(robot.getCont_id());
+      return ResponseEntity.ok().body("Contributor added to robot.");
+   }
 
    /*---Delete a robot by id---*/
    @DeleteMapping("/robot/{id}")

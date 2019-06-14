@@ -45,6 +45,14 @@ public class RobotDAOImp implements RobotDAO {
       robot2.setCont_id(robot.getCont_id());
       session.flush();
    }
+   
+   @Override
+   public void addCont(long id,Robot robot) {
+	  Session session = sessionFactory.getCurrentSession();
+      Robot robot2 = session.byId(Robot.class).load(id);
+      robot2.setCont_id(robot.getCont_id());
+      session.flush();
+   }
 
    @Override
    public void delete(long id) {
